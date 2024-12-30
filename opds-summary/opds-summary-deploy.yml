@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: opds-summary
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: opds-summary
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: opds-summary
+    spec:
+      containers:
+        - name: opds-summary
+          image: hongjoong/opds-summary:0.0.1
+          
+          imagePullPolicy: Always
+          volumeMounts:
+          - name: summary-setting
+            mountPath: /app/config/
+            readOnly: false
+      volumes:
+      - name: summary-setting
+        configMap:
+           name: summary-setting-config

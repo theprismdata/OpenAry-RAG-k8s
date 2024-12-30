@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  minio:
+    container_name: opds-minio
+    image: minio/minio
+    ports:
+      - 20004:9000 #service
+      - 20005:9001 #console
+    environment:
+      MINIO_ROOT_USER: opds
+      MINIO_ROOT_PASSWORD: opds_pass
+    volumes:
+      - /mnt/shared/minio:/data
+    command: server --console-address ":9001" /data
+    
+networks:
+  default:
+    driver: bridge
+    name: opds
+    external: true

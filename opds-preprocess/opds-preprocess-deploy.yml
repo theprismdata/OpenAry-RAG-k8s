@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: opds-preprocess
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: opds-preprocess
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: opds-preprocess
+    spec:
+      containers:
+        - name: opds-preprocess
+          image: hongjoong/opds-preprocess:0.0.1
+          
+          imagePullPolicy: Always
+          volumeMounts:
+          - name: preprocess-setting
+            mountPath: /app/config/
+            readOnly: false
+      volumes:
+      - name: preprocess-setting
+        configMap:
+           name: preprocess-setting-config

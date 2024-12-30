@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: opds-embedding
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: opds-embedding
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: opds-embedding
+    spec:
+      containers:
+        - name: opds-embedding
+          image: hongjoong/opds-embedding:0.0.1
+          
+          imagePullPolicy: Always
+          volumeMounts:
+          - name: embedding-setting
+            mountPath: /app/config/
+            readOnly: false
+      volumes:
+      - name: embedding-setting
+        configMap:
+           name: embedding-setting-config

@@ -1,0 +1,22 @@
+openai:
+  apikey: ""
+  embedding_model: "text-embedding-ada-002"
+  chat_model: "gpt-3.5-turbo"
+
+database:
+  vector_db_postgres: #PGVector
+    address: "vectordb address"
+    port: "DB PORT"
+    id: "DB ID"
+    pwd: "DB PASSWORD"
+    database: "genai_svc_dev"
+
+  opds_system_db: #MariaDB
+    address: "OPDS 운영DB Address"
+    port: "DB PORT"
+    id: "DB ID"
+    pwd: "DB PASSWORD"
+    database: "llm_dev"
+
+rest_config: #Flask CHAT API Server
+  port: 9000

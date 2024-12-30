@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: opds-chatapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: opds-chatapi
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: opds-chatapi
+    spec:
+      containers:
+        - name: opds-chatapi
+          image: hongjoong/opds-chatapi:0.0.1
+          imagePullPolicy: Always
+          ports:
+          - containerPort: 9000
+          volumeMounts:
+          - name: chatapi-setting
+            mountPath: /app/config/
+            readOnly: false
+      volumes:
+      - name: chatapi-setting
+        configMap:
+           name: chatapi-setting-config
+

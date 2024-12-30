@@ -1,0 +1,18 @@
+apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
+metadata:
+  name: my-metallb-config
+  namespace: mymetallb
+spec:
+  addresses:
+  - 192.168.50.100-192.168.50.200
+  autoAssign: true
+---
+apiVersion: metallb.io/v1beta1
+kind: L2Advertisement
+metadata:
+  name: my-metallb-config
+  namespace: mymetallb
+spec:
+  ipAddressPools:
+    - my-metallb-config

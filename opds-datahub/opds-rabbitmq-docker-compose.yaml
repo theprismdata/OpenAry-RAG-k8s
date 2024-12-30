@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  opds-rabbit-mq:
+    container_name: opds-rabbit-mq
+    image: rabbitmq:3-management-alpine
+    restart: unless-stopped
+    volumes:
+      - /mnt/shared/opds-rabbit-mq-data:/var/lib/rabbitmq
+    environment: 
+      RABBITMQ_DEFAULT_USER: opds
+      RABBITMQ_DEFAULT_PASS: opds_pass
+    ports:
+      - 20010:5672
+      - 20011:15672
+
+  opds-redis:
+    container_name: opds-redis
+    image: redis:7.4.0
+    restart: unless-stopped
+    ports:
+      - 20002:6379
+
+networks:
+  default:
+    driver: bridge
+    name: opds
+    external: true

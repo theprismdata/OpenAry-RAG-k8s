@@ -1,0 +1,30 @@
+openai:
+  apikey: ""
+  chat_model: "gpt-3.5-turbo"
+
+database:
+  opds_system_db: #MariaDB
+    address: "OPDS 운영DB Address"
+    port: "DB PORT"
+    id: "DB ID"
+    pwd: "DB PASSWORD"
+    database: "llm_dev"
+
+  mongodb: #문서 DB
+    mongo_host: "MONGODB IP"
+    mongo_port: PORT
+    mongo_user: "MONGODB USER"
+    mongo_passwd: "MONGODB PWD"
+    auth_source: "인증 DB"
+
+mqtt:
+  address: "RABBIT MQ 주소"
+  port: 20010
+  id: opds
+  pwd: opds_pass
+  virtualhost: "/"
+
+RABBITMQ_SVC_QUEUE: #요약 서비스의 메시지 큐 이름
+  SUMMARY_Q_NAME: 'OPDS_SUMMARY_REQ'
+  SUMMARY_EXCHANGE_NAME: 'OPDS_SUMMARY_REQ_Exchange'
+  SUMMARY_ROUTE_KEY: 'OPDS_SUMMARY_REQ_Route'
