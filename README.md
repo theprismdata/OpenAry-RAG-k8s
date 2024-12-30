@@ -2,7 +2,7 @@
 OPenDocuSea Project
 Service Name : OpenAry
 
-
+![system-flow](https://github.com/user-attachments/assets/a3e413e9-5c67-4feb-9281-0a616e139f06)
 
 #### Minio는 K8S의 전처리될 대상 원본 데이터를 저장함.
 #### RabbitMQ는 K8S의 각 컨테이너 서비스간의 데이터 통신에 사용됨.
