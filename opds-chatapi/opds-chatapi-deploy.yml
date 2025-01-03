@@ -22,8 +22,13 @@ spec:
           - name: chatapi-setting
             mountPath: /app/config/
             readOnly: false
+          - name: tz-seoul
+            mountPath: /etc/localtime
       volumes:
       - name: chatapi-setting
         configMap:
            name: chatapi-setting-config
+      - name: tz-seoul
+        hostPath:
+            path: /usr/share/zoneinfo/Asia/Seoul
 
